@@ -87,7 +87,7 @@ a:hover {
 }
 
 .theme-toggle:hover {
-  background: var(--link-color);
+  background: var(--accent-2);
   transform: scale(1.1);
 }
 
@@ -135,7 +135,7 @@ a:hover {
   text-align: center;
   font-size: 1.4rem;
   margin: 0;
-  color: var(--link-color);
+  color: var(--text-color);
 }
 
 .roles {
@@ -143,7 +143,7 @@ a:hover {
   font-weight: 500;
   font-size: 0.95rem;
   margin-top: 4px;
-  color: var(--text-color);
+  color: var(--accent-2);
 }
 
 .bio {
@@ -211,7 +211,7 @@ a:hover {
   transition: background 0.3s;
 }
 .tab.active {
-  background: var(--link-color);
+  background: var(--accent-2);
   color: #fff;
 }
 
@@ -253,7 +253,7 @@ a:hover {
 .show-more {
   display: block;
   margin: 30px auto 0;
-  background: var(--link-color);
+  background: var(--accent-2);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -305,7 +305,7 @@ a:hover {
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
-  background: var(--card-bg);
+  background: var(--bg-color);
 }
 
 /* =============== SUBPÁGINAS =============== */
@@ -328,7 +328,7 @@ a:hover {
 .back-to-top {
   display: block;
   margin: 40px auto 0;
-  background: var(--link-color);
+  background: var(--accent-2);
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
