@@ -174,7 +174,7 @@ a:hover {
 }
 
 .social-link:hover {
-  background: var(--link-color);
+  background: var(--accent-2);
   color: #fff;
 }
 
