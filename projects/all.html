@@ -3,19 +3,72 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Todos los Proyectos - Portfolio de Mer</title>
-  <link rel="stylesheet" href="../styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Destacado | Portfolio de Mer</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
 </head>
 
 <body>
-  <div class="project-page">
-    <h1>Todos los Proyectos</h1>
-    <p>
-      En esta sección encontrarás una recopilación de todos los proyectos en los que he trabajado:
-      diseño UX/UI, desarrollo, investigación y experimentos.
+  <!-- Botón modo oscuro/claro -->
+  <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="parallax-bg">
+      <img src="../images/header.jpg" alt="Header" class="header-img">
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL DEL PROYECTO -->
+  <main class="project-page">
+    <h1>Proyecto Destacado: App de Transporte Urbano</h1>
+    <p class="intro">
+      Este proyecto fue diseñado con el objetivo de mejorar la experiencia de los usuarios del transporte urbano, 
+      ofreciendo una interfaz intuitiva, accesible y visualmente atractiva. Se desarrolló como parte de una colaboración 
+      entre UX designers, desarrolladores y especialistas en accesibilidad.
     </p>
-    <a href="#top" class="back-to-top">↑ Volver arriba</a>
-  </div>
+
+    <img src="../images/proyecto1.jpg" alt="Captura principal del proyecto">
+
+    <section>
+      <h2>Objetivos del proyecto</h2>
+      <p>
+        El enfoque principal fue crear una solución digital que permitiera visualizar rutas, tiempos estimados y optimización 
+        de trayectos en tiempo real. Se priorizó la legibilidad, la accesibilidad y el diseño inclusivo.
+      </p>
+    </section>
+
+    <section>
+      <h2>Proceso de diseño</h2>
+      <p>
+        Se aplicó una metodología centrada en el usuario (UCD), incluyendo entrevistas, pruebas de usabilidad y prototipado 
+        iterativo en Figma. Se hicieron pruebas de contraste de color y tamaño de fuente para cumplir las pautas WCAG.
+      </p>
+      <img src="../images/proyecto1-ui.jpg" alt="Diseño UI de la app">
+    </section>
+
+    <section>
+      <h2>Resultados y aprendizajes</h2>
+      <p>
+        La aplicación alcanzó un incremento del 35% en retención de usuarios y recibió comentarios positivos sobre su 
+        simplicidad y claridad visual. Uno de los principales aprendizajes fue la importancia de la consistencia visual 
+        y la jerarquía de información.
+      </p>
+      <img src="../images/proyecto1-ux.jpg" alt="Flujo UX de la app">
+    </section>
+
+    <!-- Botón volver arriba -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      ↑ Volver arriba
+    </button>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Portfolio de Mer | Diseño UX/UI y Desarrollo Front-End</p>
+  </footer>
+
+  <script src="../script.js"></script>
 </body>
 
 </html>

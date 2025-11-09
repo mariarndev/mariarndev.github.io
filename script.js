@@ -1,65 +1,73 @@
-// ==== Alternar modo claro / oscuro ====
-const toggleBtn = document.getElementById("theme-toggle");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-  localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
-});
+// ==== Tema oscuro / claro ====
+const themeToggle = document.getElementById("theme-toggle");
+const userPref = localStorage.getItem("theme");
 
-window.addEventListener("load", () => {
-  const theme = localStorage.getItem("theme");
-  if (theme === "light") document.body.classList.add("light-mode");
+if (userPref === "light") {
+  document.body.classList.add("light-mode");
+  themeToggle.textContent = "☀️";
+} else {
+  themeToggle.textContent = "🌙";
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  const isLight = document.body.classList.contains("light-mode");
+  themeToggle.textContent = isLight ? "☀️" : "🌙";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
 });
 
 // ==== Datos de proyectos ====
 const projects = [
-  { category: "featured", title: "Rediseño App de Transporte", image: "images/proyecto1.jpg", link: "projects/featured.html" },
-  { category: "uxui", title: "Juego 2D en Unity", image: "images/proyecto2.jpg", link: "projects/uxui.html" },
-  { category: "research", title: "Investigación sobre Accesibilidad Web", image: "images/proyecto4.jpg", link: "projects/research.html" },
-  { category: "accessibility", title: "Mejoras de Accesibilidad en Apps Educativas", image: "images/proyecto5.jpg", link: "projects/accessibility.html" },
-  { category: "development", title: "Simulador Bancario en Python", image: "images/proyecto3.jpg", link: "projects/development.html" },
-  { category: "gamejams", title: "Game Jam: Echoes of Light", image: "images/proyecto6.jpg", link: "projects/gamejams.html" },
-  { category: "college", title: "Proyecto Final Universitario", image: "images/proyecto7.jpg", link: "projects/college.html" },
-  { category: "all", title: "Todos los proyectos", image: "images/proyecto8.jpg", link: "projects/all.html" }
+  { category: "featured", title: "App Transporte Urbano", image: "images/proyecto1.jpg", link: "projects/featured.html" },
+  { category: "uxui", title: "UI Dashboard Médico", image: "images/proyecto2.jpg", link: "projects/uxui.html" },
+  { category: "research", title: "Estudio Accesibilidad 2024", image: "images/proyecto3.jpg", link: "projects/research.html" },
+  { category: "accessibility", title: "Rediseño Inclusivo Web", image: "images/proyecto4.jpg", link: "projects/accessibility.html" },
+  { category: "development", title: "Simulador Bancario", image: "images/proyecto5.jpg", link: "projects/development.html" },
+  { category: "gamejams", title: "Echoes of Light", image: "images/proyecto6.jpg", link: "projects/gamejams.html" },
+  { category: "college", title: "Proyecto Final Universidad", image: "images/proyecto7.jpg", link: "projects/college.html" },
+  { category: "all", title: "Todos mis proyectos", image: "images/proyecto8.jpg", link: "projects/all.html" }
 ];
 
-// ==== Renderizado con animación ====
 const projectsGrid = document.getElementById("projects-grid");
 const tabs = document.querySelectorAll(".tab");
+const showMoreBtn = document.getElementById("show-more");
 
-function renderProjects(filter) {
-  projectsGrid.classList.add("fade-out"); // activa fade-out
+let currentCategory = "featured";
+let visibleCount = 6;
 
-  setTimeout(() => {
-    projectsGrid.innerHTML = ""; // limpia después de animar
-    const filtered = filter === "all" ? projects : projects.filter(p => p.category === filter);
-    filtered.forEach((p, i) => {
-      const card = document.createElement("a");
-      card.href = p.link;
-      card.className = "project-card";
-      card.innerHTML = `
-        <img src="${p.image}" alt="${p.title}">
-        <h3>${p.title}</h3>
-      `;
-      projectsGrid.appendChild(card);
-      setTimeout(() => card.classList.add("show"), 100 * i);
-    });
-
-    projectsGrid.classList.remove("fade-out"); // vuelve a mostrar
-  }, 300);
+function renderProjects(category, reset = true) {
+  if (reset) visibleCount = 6;
+  projectsGrid.innerHTML = "";
+  const filtered = category === "all" ? projects : projects.filter(p => p.category === category);
+  filtered.slice(0, visibleCount).forEach((p, i) => {
+    const card = document.createElement("a");
+    card.href = p.link;
+    card.className = "project-card";
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.title}">
+      <h3>${p.title}</h3>
+    `;
+    projectsGrid.appendChild(card);
+    setTimeout(() => card.classList.add("show"), 100 * i);
+  });
+  showMoreBtn.style.display = visibleCount < filtered.length ? "block" : "none";
 }
 
-// Mostrar “Featured” por defecto
-renderProjects("featured");
+showMoreBtn.addEventListener("click", () => {
+  visibleCount += 3;
+  renderProjects(currentCategory, false);
+});
 
-// ==== Navegación de tabs ====
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     tabs.forEach(t => t.classList.remove("active"));
     tab.classList.add("active");
-    const category = tab.dataset.category;
-    renderProjects(category);
+    currentCategory = tab.dataset.category;
+    renderProjects(currentCategory);
   });
 });
+
+renderProjects(currentCategory);
 
 // ==== Botón volver arriba ====
 const scrollBtn = document.createElement("button");
@@ -74,14 +82,4 @@ window.addEventListener("scroll", () => {
 
 scrollBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// Efecto parallax accesible para el header
-document.addEventListener("scroll", () => {
-  const img = document.querySelector(".header-img");
-  if (!img || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  const scrollY = window.scrollY;
-  // Mueve la imagen más lento que el scroll
-  img.style.transform = `translateY(${scrollY * 0.3}px)`;
 });

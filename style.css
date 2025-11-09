@@ -1,77 +1,87 @@
-/* =============== ESTILOS GENERALES =============== */
+/* =============== VARIABLES Y TEMAS =============== */
 :root {
   --bg-color: #1e1e1e;
   --text-color: #f5f5f5;
-  --link-color: #7db9ff;
+  --link-color: #72a8f8;
   --card-bg: #2c2c2c;
-  --highlight: #444;
+  --highlight: #3a3a3a;
+  --accent: #5c6bc0;
+  --accent-2: #7986cb;
 }
 
 body.light-mode {
   --bg-color: #fdfdfd;
-  --text-color: #202020;
-  --link-color: #0056b3;
+  --text-color: #222;
+  --link-color: #2f6bcc;
   --card-bg: #ffffff;
-  --highlight: #e6e6e6;
+  --highlight: #e9e9e9;
+  --accent: #4e60b8;
+  --accent-2: #6475ca;
 }
 
+/* =============== REGLAS BASE =============== */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
 }
 
-/* =============== HEADER =============== */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =============== HEADER (PARALLAX) =============== */
 .header {
   width: 100%;
+  height: 250px;
   overflow: hidden;
   position: relative;
-  z-index: 1;
-  height: 200px;
+}
+.parallax-bg {
+  background: var(--highlight);
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 .header-img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  display: block;
-  filter: brightness(0.9);
-  transform: translateY(0);
-  transition: transform 0.2s ease-out;
+  transform: translateZ(0);
   will-change: transform;
 }
 
-/* Degradado inferior para transición suave con secciones */
-.header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to bottom, rgba(30, 30, 30, 0) 0%, var(--bg-color) 100%);
-  backdrop-filter: blur(6px);
-  pointer-events: none;
+/* Efecto parallax solo en escritorio */
+@media (min-width: 768px) {
+  .parallax-bg {
+    background-attachment: fixed;
+  }
 }
 
-/* =============== BOTÓN MODO OSCURO/CLARO =============== */
+/* =============== BOTÓN DARK/LIGHT MODE =============== */
 .theme-toggle {
   position: fixed;
   top: 15px;
   right: 20px;
   background: var(--highlight);
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 12px;
+  border-radius: 50%;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: background 0.3s;
-  z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
 }
 .theme-toggle:hover {
   background: var(--link-color);
+  transform: scale(1.1);
 }
 
 /* =============== LAYOUT PRINCIPAL =============== */
@@ -79,81 +89,96 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 10px;
   position: relative;
-  z-index: 2;
-  margin-top: -40px; /* superposición con el header */
+  margin-top: -40px; /* superposición con header */
 }
 
-/* =============== SECCIÓN INFO (IZQUIERDA) =============== */
+/* =============== SECCIÓN INFO =============== */
 .info-section {
-  width: 32%;
-  padding: 20px;
+  width: 27%;
   background: var(--card-bg);
-  min-height: 80vh;
+  padding: 30px 20px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   position: sticky;
   top: 0;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.35);
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
+  justify-content: flex-start;
+  z-index: 5;
 }
 
+/* FOTO DE PERFIL SOBRESALIENDO */
 .profile-pic {
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto;
-}
-.roles {
-  font-weight: bold;
-  text-align: center;
-}
-.bio {
-  font-size: 0.9rem;
-  text-align: justify;
-  margin-top: 0.5rem;
+  margin: -70px auto 10px;
+  border: 4px solid var(--bg-color);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
 }
 
-/* Redes sociales en grid */
+.name {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--link-color);
+}
+
+.roles {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-top: 4px;
+  color: var(--text-color);
+}
+
+.bio {
+  text-align: justify;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+/* GRID REDES SOCIALES */
 .social-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+  margin-top: 20px;
 }
 .social-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  text-decoration: none;
-  color: var(--link-color);
   background: var(--highlight);
-  padding: 6px 10px;
+  color: var(--link-color);
+  padding: 8px;
   border-radius: 8px;
-  font-size: 0.9rem;
-  transition: background 0.2s;
-}
-.social-link img {
-  width: 18px;
-  height: 18px;
+  transition: background 0.2s, color 0.2s;
 }
 .social-link:hover {
   background: var(--link-color);
   color: #fff;
 }
+.social-link img {
+  width: 18px;
+  height: 18px;
+}
 
-/* =============== SECCIÓN PORTFOLIO (DERECHA) =============== */
+/* =============== SECCIÓN PORTFOLIO =============== */
 .portfolio-section {
-  width: 68%;
-  padding: 20px;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 10px rgba(0,0,0,0.35);
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
+  width: 67%;
+  padding: 20px 30px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 4;
 }
 
 .portfolio-nav {
@@ -169,11 +194,7 @@ body {
   color: var(--text-color);
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s ease;
-}
-.tab:hover {
-  background: var(--link-color);
-  color: #fff;
+  transition: background 0.3s;
 }
 .tab.active {
   background: var(--link-color);
@@ -184,6 +205,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+  transition: opacity 0.4s ease;
 }
 .project-card {
   background: var(--card-bg);
@@ -191,7 +213,13 @@ body {
   overflow: hidden;
   text-decoration: none;
   color: var(--text-color);
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.2s, background 0.3s, opacity 0.3s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .project-card img {
   width: 100%;
@@ -203,25 +231,47 @@ body {
   background: var(--highlight);
 }
 
-/* =============== SECCIÓN RECOMENDACIONES =============== */
+/* BOTÓN VER MÁS */
+.show-more {
+  display: block;
+  margin: 30px auto 0;
+  background: var(--link-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.show-more:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* =============== RECOMENDACIONES =============== */
 .recommendations {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   gap: 20px;
-  padding: 30px;
   background: var(--highlight);
+  padding: 40px 20px;
 }
 .rec-card {
   background: var(--card-bg);
+  border-radius: 12px;
   padding: 20px;
-  border-radius: 10px;
   width: 300px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 .rec-card img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 .stars {
   color: gold;
@@ -236,70 +286,52 @@ body {
   background: var(--card-bg);
 }
 
-/* =============== SUBPÁGINAS DE PROYECTOS =============== */
+/* =============== SUBPÁGINAS =============== */
 .project-page {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 40px 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 .project-page img {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 20px;
 }
+
+/* BOTÓN VOLVER ARRIBA */
 .back-to-top {
   display: block;
   margin: 40px auto 0;
-  text-align: center;
-  text-decoration: none;
   background: var(--link-color);
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
-  width: fit-content;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.3s, transform 0.3s;
 }
 .back-to-top:hover {
-  opacity: 0.8;
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 
-/* Animación de aparición de tarjetas */
-.project-card {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.project-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Botón "Volver arriba" */
-.back-to-top {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 18px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  font-size: 0.9rem;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.back-to-top:hover,
-.back-to-top:focus {
-  background: var(--accent-2);
-  transform: translateY(-3px);
-  outline: none;
-}
-
-/* =============== ACCESIBILIDAD (reduce motion) =============== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
+/* =============== RESPONSIVE =============== */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .info-section, .portfolio-section {
+    width: 90%;
+    margin: auto;
+  }
+  .profile-pic {
+    margin-top: -40px;
+  }
+  .recommendations {
+    flex-wrap: wrap;
   }
 }

@@ -1,51 +1,65 @@
 <link rel="stylesheet" href="style.css" />
 <script defer src="script.js"></script>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>María's Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mer | UX/UI · Accessibility · Dev</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
 
-  <!-- Botón modo claro/oscuro -->
-  <button id="theme-toggle" class="theme-toggle">🌓</button>
-
-  <!-- SECCIÓN 1: HEADER -->
+  <!-- HEADER -->
   <header class="header">
-    <img src="images/header.gif" alt="Header visual" class="header-img">
+    <div class="parallax-bg">
+      <img src="images/header.gif" alt="Header visual" class="header-img" />
+    </div>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
 
-    <!-- SECCIÓN 2: INFO (izquierda) -->
-    <aside class="info-section">
-      <section class="about">
-        <img src="images/avatar.jpg" alt="María's avatar. The image shows a girl with a wavy and short brown hair and blue eyes. She's very smiley." class="profile-pic">
-        <h2>María Ranera</h2>
-        <p class="roles">UX/UI Designer · Accessibility Advocate · Dev (C#, Python)</p>
+    <!-- INFORMATION - SECTION 01 -->
+    <aside class="info-section" id="info">
+      <div class="profile">
+        <img src="images/foto-perfil.jpg" alt="Foto de Mer" class="profile-pic" />
+        <h1 class="name">Mer</h1>
+        <p class="roles">UX/UI Designer · Accessibility Specialist · Developer</p>
         <p class="bio">
-          <p>Experienced and versatile UX/UI designer, specialised in design, research and development of video games, websites, apps and software.<br>
-          Committed to creating accessible, inclusive and player-centric experiences, combining usability, immersion and intuitive designs.</p>
+          Soy diseñadora y desarrolladora enfocada en crear experiencias digitales accesibles, inclusivas y estéticamente agradables. Me apasiona el equilibrio entre forma, función y accesibilidad.
         </p>
-      </section>
+      </div>
 
-      <section class="contact">
-        <h3>Contacto</h3>
-        <p class="contact-email"> <a href="mailto:mariarndev@gmail.com">mariarndev(@)gmail(dot)com</a></p>
+      <div class="contact">
+        <h2>Contacto</h2>
         <div class="social-grid">
-          <a href="https://www.linkedin.com/in/mariarn" class="social-link"><img src="images/linkedin_icon.png" alt="">LinkedIn</a>
-          <a href="https://github.com/mariarndev" class="social-link"><img src="images/github_icon.png" alt="">GitHub</a>
-          <a href="https://mariarndev.itch.io" class="social-link"><img src="images/itchio_icon.png" alt="">Itch.io</a>
-          <a href="https://x.com/mariarndev" class="social-link"><img src="images/twitter_icon.png" alt="">Twitter</a>
+          <a href="https://linkedin.com" target="_blank" class="social-link">
+            <img src="images/linkedin.png" alt="LinkedIn" /> LinkedIn
+          </a>
+          <a href="https://github.com" target="_blank" class="social-link">
+            <img src="images/github.png" alt="GitHub" /> GitHub
+          </a>
+          <a href="https://twitter.com" target="_blank" class="social-link">
+            <img src="images/twitter.png" alt="Twitter" /> Twitter
+          </a>
+          <a href="https://itch.io" target="_blank" class="social-link">
+            <img src="images/itchio.png" alt="Itch.io" /> Itch.io
+          </a>
         </div>
-      </section>
+
+      </div>
+
     </aside>
 
-    <!-- SECCIÓN 3: PORTFOLIO (derecha) -->
-    <section class="portfolio-section">
+    <!-- PORTFOLIO - SECTION 02 -->
+    <section class="portfolio-section" id="portfolio">
+      <h2>Portfolio</h2>
+
       <nav class="portfolio-nav">
         <button class="tab active" data-category="featured">Featured</button>
         <button class="tab" data-category="uxui">UX/UI</button>
@@ -57,60 +71,40 @@
         <button class="tab" data-category="all">All</button>
       </nav>
 
-      <div class="projects-grid" id="projects-grid">
-        <!-- Tarjetas de ejemplo -->
-        <a href="projects/featured.html" class="project-card">
-          <img src="images/proyecto1.jpg" alt="Proyecto destacado">
-          <h4>Rediseño App de Transporte</h4>
-        </a>
-
-        <a href="projects/uxui.html" class="project-card">
-          <img src="images/proyecto2.jpg" alt="Proyecto UX/UI">
-          <h4>Juego 2D en Unity</h4>
-        </a>
-
-        <a href="projects/development.html" class="project-card">
-          <img src="images/proyecto3.jpg" alt="Proyecto Python">
-          <h4>Simulador Bancario</h4>
-        </a>
-      </div>
+      <div id="projects-grid" class="projects-grid"></div>
+      <button id="show-more" class="show-more">Ver más</button>
     </section>
+
   </main>
 
-  <!-- SECTION 04: REFERRALS -->
-  <section class="Referral">
-    <div class="referral-card">
-      <img src="review1_avatar.png" alt="Referral 1's avatar">
-      <h4>Alfonso Morgado</h4>
-      <p><em>“María is a very organized, thorough and attentive-to-detail professional. As part of the Design team, she was dependable, autonomous, and always understood and stayed aligned with the project's goals.
-        She has a mindset for learning, researching and improving her skills, as she is genuinely commited and passionate about her craft.
-        She is empathic and has a very valuable sensitiveness to the well-being of her peers. We could always have laid-back and sincere conversations, and she would take and apply feedback in a very sensible way.
-        Working with María was great, and I very much trust she will nothing but continue growing and strongly contribute to the projects she will be part of in the future.”</em></p>
+  <!-- REFERRALS - SECTION 03 -->
+  <section class="recommendations" id="referrals">
+    <div class="rec-card">
+      <img src="images/ref1.jpg" alt="Recomendación 1" />
+      <h3>Alex Pérez</h3>
+      <p>"Trabajar con Mer fue una experiencia increíble. Su enfoque en accesibilidad elevó el nivel del proyecto."</p>
       <div class="stars">★★★★★</div>
     </div>
 
-    <div class="referral-card">
-      <img src="review2_avatar.png" alt="Referral 2's avatar">
-      <h4>Andrés Zardain</h4>
-      <p><em>“I had the pleasure of managing María in her role as a UX professional, and it is my pleasure to offer my recommendation.
-        María is embarking on the early stages of her career in the industry, and throughout this time, she has consistently demonstrated an exceptional level of commitment, a positive and collaborative attitude, and a high degree of professionalism in approaching her UX tasks.
-        María excels in translating user needs into effective design solutions, showcasing a keen understanding of both functionality and aesthetics.”</em></p>
+    <div class="rec-card">
+      <img src="images/ref2.jpg" alt="Recomendación 2" />
+      <h3>Lucía Gómez</h3>
+      <p>"Tiene una gran capacidad para unir diseño y desarrollo sin perder de vista la experiencia del usuario."</p>
       <div class="stars">★★★★★</div>
     </div>
 
-    <div class="referral-card">
-      <img src="review3_avatar.png" alt="Referral 3's avatar">
-      <h4>Jorge Fernández</h4>
-      <p><em>“Working with María is such a smooth experience. She will have you covered no matter what.
-        Her impecable work comes from a thorough investigation process, followed by lots of iteration until the result is the best. She's not afraid to change stuff around and implement external inputs. Communicating her designs is second nature to her, always with a clear goal and keeping accessibility in mind.
-        I really appreciate her as a workmate and I envy all of those who can work with her in the future.”</em></p>
+    <div class="rec-card">
+      <img src="images/ref3.jpg" alt="Recomendación 3" />
+      <h3>Carlos Ruiz</h3>
+      <p>"Su código es limpio y su sentido estético, impecable. Recomiendo a Mer sin dudarlo."</p>
       <div class="stars">★★★★★</div>
     </div>
+    
   </section>
 
-  <!-- SECCIÓN 5: FOOTER -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2025 María Ranera. All Rights Reserved.</p>
+    © 2025 Mer — UX/UI · Accessibility · Developer
   </footer>
 
   <script src="script.js"></script>
