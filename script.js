@@ -22,29 +22,33 @@ const projects = [
   { category: "all", title: "Todos los proyectos", image: "images/proyecto8.jpg", link: "projects/all.html" }
 ];
 
-// ==== Renderizar proyectos ====
+// ==== Renderizado con animación ====
 const projectsGrid = document.getElementById("projects-grid");
 const tabs = document.querySelectorAll(".tab");
 
 function renderProjects(filter) {
-  projectsGrid.innerHTML = "";
-  const filtered = filter === "all" ? projects : projects.filter(p => p.category === filter);
-  filtered.forEach((p, i) => {
-    const card = document.createElement("a");
-    card.href = p.link;
-    card.className = "project-card";
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.title}">
-      <h3>${p.title}</h3>
-    `;
-    projectsGrid.appendChild(card);
+  projectsGrid.classList.add("fade-out"); // activa fade-out
 
-    // Efecto de aparición escalonado
-    setTimeout(() => card.classList.add("show"), 100 * i);
-  });
+  setTimeout(() => {
+    projectsGrid.innerHTML = ""; // limpia después de animar
+    const filtered = filter === "all" ? projects : projects.filter(p => p.category === filter);
+    filtered.forEach((p, i) => {
+      const card = document.createElement("a");
+      card.href = p.link;
+      card.className = "project-card";
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.title}">
+        <h3>${p.title}</h3>
+      `;
+      projectsGrid.appendChild(card);
+      setTimeout(() => card.classList.add("show"), 100 * i);
+    });
+
+    projectsGrid.classList.remove("fade-out"); // vuelve a mostrar
+  }, 300);
 }
 
-// Mostrar "Featured" por defecto
+// Mostrar “Featured” por defecto
 renderProjects("featured");
 
 // ==== Navegación de tabs ====
@@ -70,4 +74,14 @@ window.addEventListener("scroll", () => {
 
 scrollBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Efecto parallax accesible para el header
+document.addEventListener("scroll", () => {
+  const img = document.querySelector(".header-img");
+  if (!img || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const scrollY = window.scrollY;
+  // Mueve la imagen más lento que el scroll
+  img.style.transform = `translateY(${scrollY * 0.3}px)`;
 });

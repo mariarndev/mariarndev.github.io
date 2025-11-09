@@ -21,17 +21,39 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
 }
 
 /* =============== HEADER =============== */
 .header {
   width: 100%;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
+  height: 200px;
 }
 .header-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transform: translateY(0);
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+/* Degradado inferior para transición suave con secciones */
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(30, 30, 30, 0) 0%, var(--bg-color) 100%);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
 }
 
 /* =============== BOTÓN MODO OSCURO/CLARO =============== */
@@ -46,6 +68,7 @@ body {
   cursor: pointer;
   font-size: 1.2rem;
   transition: background 0.3s;
+  z-index: 10;
 }
 .theme-toggle:hover {
   background: var(--link-color);
@@ -56,11 +79,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  margin-top: -40px; /* superposición con el header */
 }
 
 /* =============== SECCIÓN INFO (IZQUIERDA) =============== */
 .info-section {
-  width: 30%;
+  width: 32%;
   padding: 20px;
   background: var(--card-bg);
   min-height: 80vh;
@@ -69,6 +95,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.35);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
 }
 
 .profile-pic {
@@ -120,6 +149,11 @@ body {
 .portfolio-section {
   width: 68%;
   padding: 20px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0,0,0,0.35);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
 }
 
 .portfolio-nav {
@@ -135,6 +169,11 @@ body {
   color: var(--text-color);
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+.tab:hover {
+  background: var(--link-color);
+  color: #fff;
 }
 .tab.active {
   background: var(--link-color);
@@ -229,7 +268,6 @@ body {
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
 .project-card.show {
   opacity: 1;
   transform: translateY(0);
@@ -256,4 +294,12 @@ body {
   background: var(--accent-2);
   transform: translateY(-3px);
   outline: none;
+}
+
+/* =============== ACCESIBILIDAD (reduce motion) =============== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
