@@ -5,6 +5,7 @@
   --link-color: #72a8f8;
   --card-bg: #2c2c2c;
   --highlight: #3a3a3a;
+  --highlight-2: #4d4c4c;
   --accent: #5c6bc0;
   --accent-2: #7986cb;
 }
@@ -15,6 +16,7 @@ body.light-mode {
   --link-color: #2f6bcc;
   --card-bg: #ffffff;
   --highlight: #e9e9e9;
+  --highlight-2: #f5f3f3;
   --accent: #4e60b8;
   --accent-2: #6475ca;
 }
@@ -212,6 +214,7 @@ a:hover {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .tab.active {
   background: var(--accent-2);
   color: #fff;
@@ -225,7 +228,7 @@ a:hover {
 }
 
 .project-card {
-  background: var(--card-bg);
+  background: var(--highlight);
   border-radius: 10px;
   overflow: hidden;
   text-decoration: none;
@@ -248,7 +251,7 @@ a:hover {
 
 .project-card:hover {
   transform: scale(1.02);
-  background: var(--highlight);
+  background: var(--highlight-2);
 }
 
 
@@ -305,7 +308,7 @@ a:hover {
   margin-bottom: 10px;
 }
 
-.name {
+.referrals-name {
   text-align: left;
   color: var(--accent-2);
 }
