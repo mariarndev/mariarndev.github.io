@@ -1,72 +1,38 @@
-// Theme toggle + persist
-(function(){
-  const body = document.body;
-  const toggle = document.getElementById('theme-toggle');
-  const stored = localStorage.getItem('site-theme');
-  if(stored === 'light'){ body.classList.add('theme-light'); toggle.setAttribute('aria-pressed','true') }
-  else { body.classList.remove('theme-light'); toggle.setAttribute('aria-pressed','false') }
+// ==== Alternar modo claro / oscuro ====
+const toggleBtn = document.getElementById("theme-toggle");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
+});
 
-  toggle.addEventListener('click', () => {
-    const isLight = body.classList.toggle('theme-light');
-    toggle.setAttribute('aria-pressed', String(isLight));
-    localStorage.setItem('site-theme', isLight ? 'light' : 'dark');
+// Guardar tema preferido
+window.addEventListener("load", () => {
+  const theme = localStorage.getItem("theme");
+  if (theme === "light") document.body.classList.add("light-mode");
+});
+
+// ==== Tabs del portfolio (básico) ====
+const tabs = document.querySelectorAll(".tab");
+const cards = document.querySelectorAll(".project-card");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
   });
-})();
+});
 
-// Tabs and filtering projects (accessible)
-(function(){
-  const tabContainer = document.querySelector('.tabs');
-  const tabs = Array.from(tabContainer.querySelectorAll('[role="tab"]'));
-  const grid = document.getElementById('projects');
-  const cards = Array.from(grid.querySelectorAll('.project-card'));
+// ==== Botón volver arriba ====
+const scrollBtn = document.createElement("button");
+scrollBtn.innerText = "↑ Volver arriba";
+scrollBtn.className = "back-to-top";
+scrollBtn.style.display = "none";
+document.body.appendChild(scrollBtn);
 
-  function setFilter(filter){
-    tabs.forEach(t => {
-      const isActive = t.dataset.filter === filter;
-      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      if(isActive) t.focus();
-    });
+window.addEventListener("scroll", () => {
+  scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
 
-    // Accessible update
-    grid.setAttribute('aria-busy','true');
-
-    // Filter logic: card data-categories contains filter
-    cards.forEach(card => {
-      const cats = (card.getAttribute('data-categories')||'').split(/\s+/);
-      const show = (filter === 'all') || cats.includes(filter);
-      card.style.display = show ? '' : 'none';
-    });
-
-    grid.setAttribute('aria-busy','false');
-  }
-
-  // Click / keyboard on tabs
-  tabs.forEach(t => {
-    t.addEventListener('click', () => setFilter(t.dataset.filter));
-    t.addEventListener('keydown', (e) => {
-      const idx = tabs.indexOf(t);
-      if(e.key === 'ArrowRight') { tabs[(idx+1)%tabs.length].click(); e.preventDefault(); }
-      if(e.key === 'ArrowLeft') { tabs[(idx-1+tabs.length)%tabs.length].click(); e.preventDefault(); }
-    });
-  });
-
-  // Initialize
-  setFilter('all');
-
-  // Make project-cards keyboard-activable (Enter opens link)
-  cards.forEach(card => {
-    card.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        const link = card.querySelector('.project-link');
-        if(link) link.click();
-      }
-    });
-  });
-})();
-
-// Set current year in footer
-document.addEventListener('DOMContentLoaded', () => {
-  const y = new Date().getFullYear();
-  const el = document.getElementById('year');
-  if(el) el.textContent = y;
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });

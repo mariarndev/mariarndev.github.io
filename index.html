@@ -1,214 +1,110 @@
 <link rel="stylesheet" href="style.css" />
 <script defer src="script.js"></script>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>María Ranera - Portfolio</title>
-  <meta name="description" content="María's Portfolio">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio de Mer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <!-- Skip link -->
-  <a class="skip-link" href="#content">Saltar al contenido</a>
 
-  <!-- HEADER: imagen/GIF ancho -->
-  <header class="site-header" role="banner" aria-label="Header">
-    <div class="header-media" role="img" aria-label="Header visual (imagen o GIF)" style="background-image:url('images/header.jpg')"></div>
-    <div class="header-controls">
-      <button id="theme-toggle" aria-pressed="false" aria-label="Cambiar tema claro/oscuro">🌗</button>
-    </div>
+  <!-- Botón modo claro/oscuro -->
+  <button id="theme-toggle" class="theme-toggle">🌓</button>
+
+  <!-- SECCIÓN 1: HEADER -->
+  <header class="header">
+    <img src="images/header.gif" alt="Header visual" class="header-img">
   </header>
 
-  <!-- MAIN LAYOUT -->
-  <div id="content" class="layout">
+  <main class="main-content">
 
-    <!-- INFO (panel izquierdo fijo) -->
-    <aside class="panel panel-left" aria-labelledby="about-heading" id="info-panel">
-      <div class="profile">
-        <img class="avatar" src="images/avatar.jpg" alt="María's avatar. The photo shows a girl with brown wavy hair and blue eyes, and who's very smiley.">
-        <h1 class="name">María Ranera</h1>
-        <p class="roles">UX/UI Designer · Accessibility Specialist · Developer (C#, Python)</p>
-      </div>
-
-      <section class="about" aria-labelledby="about-heading">
-        <h2 id="about-heading">About me</h2>
-        <p>Experienced and versatile UX/UI designer, specialised in design, research and development of video games, websites, apps and software.<br>Committed to creating accessible, inclusive and player-centric experiences, combining usability, immersion and intuitive designs.</p>
+    <!-- SECCIÓN 2: INFO (izquierda) -->
+    <aside class="info-section">
+      <section class="about">
+        <img src="images/foto-perfil.jpg" alt="Foto de Mer" class="profile-pic">
+        <h2>Mer</h2>
+        <p class="roles">UX/UI Designer · Dev · Accessibility Advocate</p>
+        <p class="bio">
+          Soy una profesional apasionada por el diseño centrado en las personas, 
+          la accesibilidad digital y el desarrollo de experiencias inclusivas.
+        </p>
       </section>
 
-      <section class="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Contact</h2>
-        <p class="contact-email"> <a href="mailto:mariarndev@gmail.com">mariarndev(@)gmail(dot)com</a></p>
-
-        <nav class="socials" aria-label="Redes sociales">
-          <!-- Usa tus iconos en images/ y pon el texto. Cada link tiene icono antes del texto -->
-          <a href="https://www.linkedin.com/in/mariarn" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Linkedin page">
-            <img src="images/linkedin_icon.png" alt="Linkedin icon" aria-hidden="true"><span>LinkedIn</span>
-          </a>
-          <a href="https://github.com/mariarndev" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Github page">
-            <img src="images/github_icon.png" alt="Github icon" aria-hidden="true"><span>GitHub</span>
-          </a>
-          <a href="https://mariarndev.itch.io" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Itch.io page">
-            <img src="images/itchio_icon.png" alt="Itchio icon" aria-hidden="true"><span>Itch.io</span>
-          </a>
-          <a href="https://x.com/mariarndev" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter profile">
-            <img src="images/twitter_icon.png" alt="Twitter icon" aria-hidden="true"><span>Twitter</span>
-          </a>
-        </nav>
+      <section class="contact">
+        <h3>Contacto</h3>
+        <div class="social-grid">
+          <a href="#" class="social-link"><img src="images/icon-linkedin.png" alt="">LinkedIn</a>
+          <a href="#" class="social-link"><img src="images/icon-twitter.png" alt="">Twitter</a>
+          <a href="#" class="social-link"><img src="images/icon-github.png" alt="">GitHub</a>
+          <a href="#" class="social-link"><img src="images/icon-itchio.png" alt="">Itch.io</a>
+        </div>
       </section>
     </aside>
 
-    <!-- PORTFOLIO (panel derecho fijo) -->
-    <main class="panel panel-right" aria-labelledby="portfolio-heading" id="portfolio-panel">
-      <header class="portfolio-header">
-        <h2 id="portfolio-heading">Portfolio</h2>
-        <div class="tabs" role="tablist" aria-label="Filtrar proyectos">
-          <!-- Each button has data-filter attribute; "All" selected by default -->
-          <button role="tab" aria-selected="true" data-filter="all">All</button>
-          <button role="tab" data-filter="featured">Featured</button>
-          <button role="tab" data-filter="uxui">UX/UI</button>
-          <button role="tab" data-filter="research">Research</button>
-          <button role="tab" data-filter="accessibility">Accessibility</button>
-          <button role="tab" data-filter="development">Development</button>
-          <button role="tab" data-filter="gamejams">Game Jams</button>
-          <button role="tab" data-filter="college">College</button>
-        </div>
-      </header>
+    <!-- SECCIÓN 3: PORTFOLIO (derecha) -->
+    <section class="portfolio-section">
+      <nav class="portfolio-nav">
+        <button class="tab active" data-target="featured">Featured</button>
+        <button class="tab" data-target="uxui">UX/UI</button>
+        <button class="tab" data-target="research">Research</button>
+        <button class="tab" data-target="accessibility">Accessibility</button>
+        <button class="tab" data-target="development">Development</button>
+        <button class="tab" data-target="gamejams">Game Jams</button>
+        <button class="tab" data-target="college">College</button>
+        <button class="tab" data-target="all">All</button>
+      </nav>
 
-      <!-- Grid de proyectos -->
-      <section class="project-grid" id="projects" aria-live="polite">
-        <!-- Ejemplo de tarjeta grande. Incluye data-categories (espacio-sep) -->
-        <!-- Repite/añade tarjetas y ajusta href a proyectos reales (projects/slug.html) -->
-        <article class="project-card" data-categories="featured uxui accessibility" tabindex="0">
-          <a href="projects/transport-app.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Rediseño de App de Transporte. Imagen de vista previa" style="background-image:url('images/project-transport.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Rediseño de App de Transporte</h3>
-              <p class="project-meta">UX · Accessibility · Figma</p>
-            </div>
-          </a>
-        </article>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Tarjetas de ejemplo -->
+        <a href="projects/featured.html" class="project-card">
+          <img src="images/proyecto1.jpg" alt="Proyecto destacado">
+          <h4>Rediseño App de Transporte</h4>
+        </a>
 
-        <article class="project-card" data-categories="development gamejams" tabindex="0">
-          <a href="projects/unity-game.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Juego 2D en Unity. Captura del juego." style="background-image:url('images/project-unity.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Juego 2D en Unity</h3>
-              <p class="project-meta">Unity · C# · Game Design</p>
-            </div>
-          </a>
-        </article>
+        <a href="projects/uxui.html" class="project-card">
+          <img src="images/proyecto2.jpg" alt="Proyecto UX/UI">
+          <h4>Juego 2D en Unity</h4>
+        </a>
 
-        <article class="project-card" data-categories="development college research" tabindex="0">
-          <a href="projects/banking-sim.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Simulador Bancario en Python. Diagrama de la app." style="background-image:url('images/project-python.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Simulador Bancario en Python</h3>
-              <p class="project-meta">Python · CLI · Education</p>
-            </div>
-          </a>
-        </article>
-
-        <!-- Añade más tarjetas reales -->
-        <article class="project-card" data-categories="uxui research" tabindex="0">
-          <a href="projects/research-case.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Caso de investigación UX. Imagen." style="background-image:url('images/project-research.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Estudio de Investigación UX</h3>
-              <p class="project-meta">Research · Usability Testing</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="project-card" data-categories="accessibility uxui" tabindex="0">
-          <a href="projects/access-audit.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Auditoría de accesibilidad. Imagen." style="background-image:url('images/project-access.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Auditoría de Accesibilidad</h3>
-              <p class="project-meta">WCAG · A11y</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="project-card" data-categories="featured development" tabindex="0">
-          <a href="projects/tooling.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Herramienta en Python. Captura." style="background-image:url('images/project-tooling.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Herramienta de Análisis (Python)</h3>
-              <p class="project-meta">Python · Automation</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="project-card" data-categories="gamejams featured" tabindex="0">
-          <a href="projects/jam-game.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Juego de Game Jam. Imagen." style="background-image:url('images/project-jam.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Prototipo Game Jam</h3>
-              <p class="project-meta">Game Jam · Prototype</p>
-            </div>
-          </a>
-        </article>
-
-        <article class="project-card" data-categories="college research" tabindex="0">
-          <a href="projects/college-project.html" class="project-link">
-            <figure class="thumb" role="img" aria-label="Proyecto universitario. Imagen." style="background-image:url('images/project-college.jpg')"></figure>
-            <div class="project-info">
-              <h3 class="project-title">Proyecto Universitario</h3>
-              <p class="project-meta">Academic · UX</p>
-            </div>
-          </a>
-        </article>
-
-      </section>
-    </main>
-  </div>
-
-  <!-- Referrals (full width under panels) -->
-  <section class="referrals" aria-labelledby="rec-heading">
-    <div class="rec-inner">
-      <h2 id="rec-heading">Referrals</h2>
-
-      <div class="rec-grid">
-        <article class="rec-card">
-          <img class="rec-avatar" src="images/review1_avatar.png" alt="Alfonso Morgado">
-          <div class="rec-content">
-            <h3>Alfonso Morgado</h3>
-            <p class="rec-text">“María is a very organized, thorough and attentive-to-detail professional... ”</p>
-            <div class="stars" aria-hidden="true">★★★★★</div>
-          </div>
-        </article>
-
-        <article class="rec-card">
-          <img class="rec-avatar" src="images/review2_avatar.png" alt="Andrés Zardain">
-          <div class="rec-content">
-            <h3>Andrés Zardain</h3>
-            <p class="rec-text">“I had the pleasure of managing María in her role as a UX professional... ”</p>
-            <div class="stars" aria-hidden="true">★★★★★</div>
-          </div>
-        </article>
-
-        <article class="rec-card">
-          <img class="rec-avatar" src="images/review3_avatar.png" alt="Jorge Fernández">
-          <div class="rec-content">
-            <h3>Jorge Fernández</h3>
-            <p class="rec-text">“Working with María is such a smooth experience. She will have you covered... ”</p>
-            <div class="stars" aria-hidden="true">★★★★★</div>
-          </div>
-        </article>
+        <a href="projects/development.html" class="project-card">
+          <img src="images/proyecto3.jpg" alt="Proyecto Python">
+          <h4>Simulador Bancario</h4>
+        </a>
       </div>
+    </section>
+  </main>
+
+  <!-- SECCIÓN 4: RECOMENDACIONES -->
+  <section class="recommendations">
+    <div class="rec-card">
+      <img src="images/persona1.jpg" alt="Recomendación 1">
+      <h4>Alfonso Morgado</h4>
+      <p><em>“Mer es una profesional detallista, organizada y con gran compromiso.”</em></p>
+      <div class="stars">★★★★★</div>
+    </div>
+
+    <div class="rec-card">
+      <img src="images/persona2.jpg" alt="Recomendación 2">
+      <h4>Andrés Zardain</h4>
+      <p><em>“Ha demostrado un nivel de compromiso y creatividad excepcionales.”</em></p>
+      <div class="stars">★★★★★</div>
+    </div>
+
+    <div class="rec-card">
+      <img src="images/persona3.jpg" alt="Recomendación 3">
+      <h4>Jorge Fernández</h4>
+      <p><em>“Trabajar con Mer siempre es una experiencia fluida y profesional.”</em></p>
+      <div class="stars">★★★★★</div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <small>© <span id="year"></span> María Ranera. All rights reserved.</small>
-    </div>
+  <!-- SECCIÓN 5: FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Mer — Todos los derechos reservados.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
