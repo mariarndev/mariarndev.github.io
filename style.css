@@ -222,3 +222,38 @@ body {
 .back-to-top:hover {
   opacity: 0.8;
 }
+
+/* Animación de aparición de tarjetas */
+.project-card {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Botón "Volver arriba" */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top:hover,
+.back-to-top:focus {
+  background: var(--accent-2);
+  transform: translateY(-3px);
+  outline: none;
+}
