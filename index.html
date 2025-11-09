@@ -1,65 +1,212 @@
 <link rel="stylesheet" href="style.css" />
 <script defer src="script.js"></script>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mer — Portfolio</title>
+  <meta name="description" content="Mer — UX/UI Designer · Accessibility Specialist · Developer. Portfolio y contacto.">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Skip link -->
+  <a class="skip-link" href="#content">Saltar al contenido</a>
 
-<!DOCTYPE html>
+  <!-- HEADER: imagen/GIF ancho -->
+  <header class="site-header" role="banner" aria-label="Header">
+    <div class="header-media" role="img" aria-label="Header visual (imagen o GIF)" style="background-image:url('images/header.jpg')"></div>
+    <div class="header-controls">
+      <button id="theme-toggle" aria-pressed="false" aria-label="Cambiar tema claro/oscuro">🌗</button>
+    </div>
+  </header>
 
+  <!-- MAIN LAYOUT -->
+  <div id="content" class="layout">
 
-<section id="portfolio" class="portfolio">
-<h2>Portfolio</h2>
-<div class="projects">
-<article class="project">
-<img src="images/ux-case-study.jpg" alt="Vista previa de un caso de estudio UX" />
-<h3>Rediseño de App de Transporte</h3>
-<p>Proyecto de UX/UI centrado en mejorar la usabilidad y accesibilidad de una aplicación de transporte urbano. Incluye investigación, wireframes y prototipos interactivos.</p>
-<a href="https://www.behance.net/" target="_blank">Ver proyecto</a>
-</article>
+    <!-- INFO (panel izquierdo fijo) -->
+    <aside class="panel panel-left" aria-labelledby="about-heading" id="info-panel">
+      <div class="profile">
+        <img class="avatar" src="images/avatar.jpg" alt="Foto de Mer">
+        <h1 class="name">Mer</h1>
+        <p class="roles">UX/UI Designer · Accessibility Specialist · Developer (C# · Python)</p>
+      </div>
 
+      <section class="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">Sobre mí</h2>
+        <p>Soy diseñadora centrada en experiencias inclusivas: diseño de interfaces, auditorías de accesibilidad y desarrollo de prototipos. Creo en soluciones elegantes, usables y técnicamente sólidas.</p>
+      </section>
 
-<article class="project">
-<img src="images/unity-game.jpg" alt="Captura de un videojuego en Unity" />
-<h3>Juego 2D en Unity</h3>
-<p>Desarrollo de un juego tipo plataforma creado en Unity con C#. Incluye mecánicas de recolección y entrega inspiradas en el diseño de interacción accesible.</p>
-<a href="https://mer.itch.io/" target="_blank">Ver en Itch.io</a>
-</article>
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contacto</h2>
+        <p class="contact-email"><strong>Email:</strong> <a href="mailto:mer.contacto@example.com">mer.contacto@example.com</a></p>
 
+        <nav class="socials" aria-label="Redes sociales">
+          <!-- Usa tus iconos en images/ y pon el texto. Cada link tiene icono antes del texto -->
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn de Mer">
+            <img src="images/icon-linkedin.svg" alt="" aria-hidden="true"><span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub de Mer">
+            <img src="images/icon-github.svg" alt="" aria-hidden="true"><span>GitHub</span>
+          </a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter de Mer">
+            <img src="images/icon-twitter.svg" alt="" aria-hidden="true"><span>Twitter</span>
+          </a>
+          <a href="https://mer.itch.io/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Itch.io de Mer">
+            <img src="images/icon-itchio.svg" alt="" aria-hidden="true"><span>Itch.io</span>
+          </a>
+        </nav>
+      </section>
+    </aside>
 
-<article class="project">
-<img src="images/python-app.jpg" alt="Captura de una aplicación en Python" />
-<h3>Simulador Bancario en Python</h3>
-<p>Aplicación educativa desarrollada con Python, enfocada en la gestión de usuarios, seguridad y lógica de negocio modular. Ideal para enseñar fundamentos de programación.</p>
-<a href="https://github.com/" target="_blank">Ver en GitHub</a>
-</article>
-</div>
-</section>
+    <!-- PORTFOLIO (panel derecho fijo) -->
+    <main class="panel panel-right" aria-labelledby="portfolio-heading" id="portfolio-panel">
+      <header class="portfolio-header">
+        <h2 id="portfolio-heading">Portfolio</h2>
+        <div class="tabs" role="tablist" aria-label="Filtrar proyectos">
+          <!-- Each button has data-filter attribute; "All" selected by default -->
+          <button role="tab" aria-selected="true" data-filter="all">All</button>
+          <button role="tab" data-filter="featured">Featured</button>
+          <button role="tab" data-filter="uxui">UX/UI</button>
+          <button role="tab" data-filter="research">Research</button>
+          <button role="tab" data-filter="accessibility">Accessibility</button>
+          <button role="tab" data-filter="development">Development</button>
+          <button role="tab" data-filter="gamejams">Game Jams</button>
+          <button role="tab" data-filter="college">College</button>
+        </div>
+      </header>
 
+      <!-- Grid de proyectos -->
+      <section class="project-grid" id="projects" aria-live="polite">
+        <!-- Ejemplo de tarjeta grande. Incluye data-categories (espacio-sep) -->
+        <!-- Repite/añade tarjetas y ajusta href a proyectos reales (projects/slug.html) -->
+        <article class="project-card" data-categories="featured uxui accessibility" tabindex="0">
+          <a href="projects/transport-app.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Rediseño de App de Transporte. Imagen de vista previa" style="background-image:url('images/project-transport.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Rediseño de App de Transporte</h3>
+              <p class="project-meta">UX · Accessibility · Figma</p>
+            </div>
+          </a>
+        </article>
 
-<section id="servicios" class="services">
-<h2>Servicios</h2>
-<ul>
-<li><strong>Diseño UX/UI:</strong> investigación, wireframes, prototipado y testeo.</li>
-<li><strong>Accesibilidad digital:</strong> auditorías, asesoría WCAG, mejoras de usabilidad.</li>
-<li><strong>Desarrollo de software:</strong> Python, interfaces, proyectos educativos.</li>
-<li><strong>Desarrollo de videojuegos:</strong> Unity, C#, mecánicas intuitivas y accesibles.</li>
-</ul>
-</section>
+        <article class="project-card" data-categories="development gamejams" tabindex="0">
+          <a href="projects/unity-game.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Juego 2D en Unity. Captura del juego." style="background-image:url('images/project-unity.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Juego 2D en Unity</h3>
+              <p class="project-meta">Unity · C# · Game Design</p>
+            </div>
+          </a>
+        </article>
 
+        <article class="project-card" data-categories="development college research" tabindex="0">
+          <a href="projects/banking-sim.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Simulador Bancario en Python. Diagrama de la app." style="background-image:url('images/project-python.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Simulador Bancario en Python</h3>
+              <p class="project-meta">Python · CLI · Education</p>
+            </div>
+          </a>
+        </article>
 
-<section id="contacto" class="contact">
-<h2>Contacto</h2>
-<p>If you are interested in any kind of collaboration or would like to know more, you can contact to me at:<a href="mailto:mariarndev@gmail.com"> mariarndev@gmail.com</a></p>
-<div class="socials">
-<a href="https://www.linkedin.com/in/mariarn" target="_blank">LinkedIn</a>
-<a href="https://github.com/mariarndev" target="_blank">GitHub</a>
-<a href="https://mariarndev.itch.io" target="_blank">Itch.io</a>
-<a href="https://x.com/mariarndev" target="_blank">Twitter</a>
-</div>
-</section>
-</main>
+        <!-- Añade más tarjetas reales -->
+        <article class="project-card" data-categories="uxui research" tabindex="0">
+          <a href="projects/research-case.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Caso de investigación UX. Imagen." style="background-image:url('images/project-research.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Estudio de Investigación UX</h3>
+              <p class="project-meta">Research · Usability Testing</p>
+            </div>
+          </a>
+        </article>
 
+        <article class="project-card" data-categories="accessibility uxui" tabindex="0">
+          <a href="projects/access-audit.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Auditoría de accesibilidad. Imagen." style="background-image:url('images/project-access.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Auditoría de Accesibilidad</h3>
+              <p class="project-meta">WCAG · A11y</p>
+            </div>
+          </a>
+        </article>
 
-<footer>
-<p>© 2025 María Ranera. Todos los derechos reservados.</p>
-</footer>
+        <article class="project-card" data-categories="featured development" tabindex="0">
+          <a href="projects/tooling.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Herramienta en Python. Captura." style="background-image:url('images/project-tooling.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Herramienta de Análisis (Python)</h3>
+              <p class="project-meta">Python · Automation</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="project-card" data-categories="gamejams featured" tabindex="0">
+          <a href="projects/jam-game.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Juego de Game Jam. Imagen." style="background-image:url('images/project-jam.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Prototipo Game Jam</h3>
+              <p class="project-meta">Game Jam · Prototype</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="project-card" data-categories="college research" tabindex="0">
+          <a href="projects/college-project.html" class="project-link">
+            <figure class="thumb" role="img" aria-label="Proyecto universitario. Imagen." style="background-image:url('images/project-college.jpg')"></figure>
+            <div class="project-info">
+              <h3 class="project-title">Proyecto Universitario</h3>
+              <p class="project-meta">Academic · UX</p>
+            </div>
+          </a>
+        </article>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- RECOMMENDATIONS (full width under panels) -->
+  <section class="recommendations" aria-labelledby="rec-heading">
+    <div class="rec-inner">
+      <h2 id="rec-heading">Recomendaciones</h2>
+
+      <div class="rec-grid">
+        <article class="rec-card">
+          <img class="rec-avatar" src="images/reviewer1.jpg" alt="Alfonso Morgado">
+          <div class="rec-content">
+            <h3>Alfonso Morgado</h3>
+            <p class="rec-text">“María is a very organized, thorough and attentive-to-detail professional... ”</p>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+        </article>
+
+        <article class="rec-card">
+          <img class="rec-avatar" src="images/reviewer2.jpg" alt="Andrés Zardain">
+          <div class="rec-content">
+            <h3>Andrés Zardain</h3>
+            <p class="rec-text">“I had the pleasure of managing María in her role as a UX professional... ”</p>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+        </article>
+
+        <article class="rec-card">
+          <img class="rec-avatar" src="images/reviewer3.jpg" alt="Jorge Fernández">
+          <div class="rec-content">
+            <h3>Jorge Fernández</h3>
+            <p class="rec-text">“Working with María is such a smooth experience. She will have you covered... ”</p>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <small>© <span id="year"></span> Mer — Diseño accesible · Desarrollo · Juegos</small>
+    </div>
+  </footer>
 </body>
 </html>
-```
