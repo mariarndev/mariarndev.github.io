@@ -1,4 +1,4 @@
-/* =============== VARIABLES Y TEMAS =============== */
+/* =============== VARIABLES & THEMES =============== */
 :root {
   --bg-color: #1e1e1e;
   --text-color: #f5f5f5;
@@ -20,7 +20,7 @@ body.light-mode {
 }
 
 
-/* =============== REGLAS BASE =============== */
+/* =============== BASE RULES =============== */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -71,7 +71,7 @@ a:hover {
 }
 
 
-/* =============== BOTÓN DARK/LIGHT MODE =============== */
+/* =============== DARK / LIGHT MODE (Button) =============== */
 .theme-toggle {
   position: fixed;
   top: 15px;
@@ -92,7 +92,7 @@ a:hover {
 }
 
 
-/* =============== LAYOUT PRINCIPAL =============== */
+/* =============== MAIN LAYOUT =============== */
 .main-content {
   display: flex;
   justify-content: space-between;
@@ -103,7 +103,7 @@ a:hover {
 }
 
 
-/* =============== SECCIÓN INFO =============== */
+/* =============== INFO - SECTION 01 =============== */
 .info-section {
   width: 27%;
   background: var(--card-bg);
@@ -119,7 +119,8 @@ a:hover {
   z-index: 5;
 }
 
-/* FOTO DE PERFIL SOBRESALIENDO */
+
+/* PROFILE PICTURE - EFFECT SUPERPOSE */
 .profile-pic {
   width: 160px;
   height: 160px;
@@ -153,7 +154,8 @@ a:hover {
   line-height: 1.5;
 }
 
-/* GRID REDES SOCIALES */
+
+/* SOCIAL MEDIA (Grid) */
 .social-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -184,7 +186,7 @@ a:hover {
 }
 
 
-/* =============== SECCIÓN PORTFOLIO =============== */
+/* =============== PORTFOLIO - SECTION 02 =============== */
 .portfolio-section {
   width: 67%;
   padding: 20px 30px;
@@ -249,7 +251,8 @@ a:hover {
   background: var(--highlight);
 }
 
-/* BOTÓN VER MÁS */
+
+/* SEE MORE (Button) */
 .show-more {
   display: block;
   margin: 30px auto 0;
@@ -268,6 +271,7 @@ a:hover {
   transform: translateY(-2px);
 }
 
+
 /* =============== REFERRALS =============== */
 .referrals {
   display: flex;
@@ -276,6 +280,12 @@ a:hover {
   gap: 30px;
   background: var(--bg-color);
   padding: 40px 20px;
+}
+
+.title {
+  text-align: left;
+  margin: 0;
+  color: var(--text-color);
 }
 
 .referrals-card {
@@ -295,6 +305,11 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.name {
+  text-align: left;
+  color: var(--accent-2);
+}
+
 .stars {
   color: gold;
   margin-top: 8px;
@@ -308,7 +323,7 @@ a:hover {
   background: var(--bg-color);
 }
 
-/* =============== SUBPÁGINAS =============== */
+/* =============== SUBPAGES =============== */
 .project-page {
   max-width: 900px;
   margin: auto;
@@ -324,10 +339,10 @@ a:hover {
   margin-bottom: 20px;
 }
 
-/* BOTÓN VOLVER ARRIBA */
+/* BACK TO TOP (Button) */
 .back-to-top {
   display: block;
-  margin: 40px auto 0;
+  margin: 5px auto 0;
   background: var(--accent-2);
   color: white;
   padding: 10px 20px;

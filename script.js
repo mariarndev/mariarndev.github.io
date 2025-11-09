@@ -1,4 +1,4 @@
-// ==== Tema oscuro / claro ====
+// ==== Dark / Light mode ====
 const themeToggle = document.getElementById("theme-toggle");
 const userPref = localStorage.getItem("theme");
 
@@ -16,7 +16,8 @@ themeToggle.addEventListener("click", () => {
   localStorage.setItem("theme", isLight ? "light" : "dark");
 });
 
-// ==== Datos de proyectos ====
+
+// ==== Project data ====
 const projects = [
   { category: "featured", title: "App Transporte Urbano", image: "images/proyecto1.jpg", link: "projects/featured.html" },
   { category: "uxui", title: "UI Dashboard Médico", image: "images/proyecto2.jpg", link: "projects/uxui.html" },
@@ -69,9 +70,10 @@ tabs.forEach(tab => {
 
 renderProjects(currentCategory);
 
-// ==== Botón volver arriba ====
+
+// ==== Back to top (button) ====
 const scrollBtn = document.createElement("button");
-scrollBtn.innerText = "↑ Volver arriba";
+scrollBtn.innerText = "↑ Back to top";
 scrollBtn.className = "back-to-top";
 scrollBtn.style.display = "none";
 document.body.appendChild(scrollBtn);
