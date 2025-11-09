@@ -34,6 +34,7 @@ a {
   color: var(--link-color);
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -272,8 +273,8 @@ a:hover {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  gap: 20px;
-  background: var(--highlight);
+  gap: 30px;
+  background: var(--bg-color);
   padding: 40px 20px;
 }
 
@@ -281,7 +282,7 @@ a:hover {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 20px;
-  width: 300px;
+  width: 450px;
   text-align: left;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
