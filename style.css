@@ -249,8 +249,8 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* =============== RECOMENDACIONES =============== */
-.recommendations {
+/* =============== REFERRALS =============== */
+.referrals {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -258,7 +258,7 @@ a:hover {
   background: var(--highlight);
   padding: 40px 20px;
 }
-.rec-card {
+.referrals-card {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 20px;
@@ -266,7 +266,7 @@ a:hover {
   text-align: center;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
-.rec-card img {
+.referrals-card img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
