@@ -138,7 +138,7 @@ a:hover {
 }
 
 .bio {
-  text-align: justify;
+  text-align: left;
   font-size: 0.9rem;
   margin-top: 15px;
   line-height: 1.5;
@@ -151,6 +151,7 @@ a:hover {
   gap: 10px;
   margin-top: 20px;
 }
+
 .social-link {
   display: flex;
   align-items: center;
@@ -162,10 +163,12 @@ a:hover {
   border-radius: 8px;
   transition: background 0.2s, color 0.2s;
 }
+
 .social-link:hover {
   background: var(--link-color);
   color: #fff;
 }
+
 .social-link img {
   width: 18px;
   height: 18px;
@@ -207,6 +210,7 @@ a:hover {
   gap: 20px;
   transition: opacity 0.4s ease;
 }
+
 .project-card {
   background: var(--card-bg);
   border-radius: 10px;
@@ -217,15 +221,18 @@ a:hover {
   opacity: 0;
   transform: translateY(10px);
 }
+
 .project-card.show {
   opacity: 1;
   transform: translateY(0);
 }
+
 .project-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
+
 .project-card:hover {
   transform: scale(1.02);
   background: var(--highlight);
@@ -244,6 +251,7 @@ a:hover {
   font-weight: 500;
   transition: opacity 0.3s, transform 0.3s;
 }
+
 .show-more:hover {
   opacity: 0.85;
   transform: translateY(-2px);
@@ -258,14 +266,16 @@ a:hover {
   background: var(--highlight);
   padding: 40px 20px;
 }
+
 .referrals-card {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 20px;
   width: 300px;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
+
 .referrals-card img {
   width: 60px;
   height: 60px;
@@ -273,6 +283,7 @@ a:hover {
   object-fit: cover;
   margin-bottom: 10px;
 }
+
 .stars {
   color: gold;
   margin-top: 8px;
@@ -295,6 +306,7 @@ a:hover {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
+
 .project-page img {
   width: 100%;
   border-radius: 10px;
@@ -314,6 +326,7 @@ a:hover {
   font-weight: 500;
   transition: opacity 0.3s, transform 0.3s;
 }
+
 .back-to-top:hover {
   opacity: 0.85;
   transform: translateY(-2px);
